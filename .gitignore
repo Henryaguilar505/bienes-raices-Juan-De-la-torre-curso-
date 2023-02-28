@@ -1,0 +1,5 @@
+includes/imagenes/*
+build/img/*
+node_modules
+vendor
+src/img/*
