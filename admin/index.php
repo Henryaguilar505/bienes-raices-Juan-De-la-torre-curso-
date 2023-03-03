@@ -42,13 +42,11 @@ require '../includes/app.php';
 
     <main class="contenedor seccion">
         <h1>Administrador de bienes raices</h1>
-        <?php if(intval($resultado) === 1):?>
-            <p class="alerta exito">Anuncio Registado Correctamente</p>
-        <?php elseif(intval($resultado)===2):?>
-            <p class="alerta exito">Anuncio Actualizado Correctamente</p>
-        <?php elseif(intval($resultado)===3):?>
-            <p class="alerta exito">Anuncio Borrado Correctamente</p>
-         <?php endif; ?>
+        
+            <?php $mensaje = mostrarNotificaiones(intval($resultado)); ?>
+               <?php if($mensaje): ?>
+                  <p class="alerta exito"><?php echo sanitizar($mensaje); ?></p>
+             <?php endif; ?>
 
         <a href="/admin/propiedades/crear.php" class="boton boton-verde">Nueva Propiedad</a>
         <a href="/admin/vendedores/crear.php" class="boton boton-amarillo">Nuevo(a) Vendedor</a>
@@ -114,7 +112,7 @@ require '../includes/app.php';
                         <input type="submit" value="Eliminar" class="boton-rojo-block">
                      </form>
 
-                      <a href="/admin/propiedades/actualizar.php?id=<?php echo $vendedor->id; ?>"  class="boton-amarillo-block">Actualizar</a>
+                      <a href="/admin/vendedores/actualizar.php?id=<?php echo $vendedor->id; ?>"  class="boton-amarillo-block">Actualizar</a>
                   </td>
                </tr>
                <?php endforeach; ?>

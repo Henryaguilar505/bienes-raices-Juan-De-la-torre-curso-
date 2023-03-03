@@ -20,7 +20,7 @@ class ActiveRecord{
 
     //funcion para crear o actualizar una propiedad
     public function guardar(){
-        if(!is_null($this->id)){ //si ya hay un id significa que estamos actualizando
+        if(!is_null($this->id)){ //si ya hay un id significa que estamos actualizando porque no el id se crea al hacer el insert 
             $this->actualizar();
         }else{
             $this->crear();
@@ -36,10 +36,10 @@ class ActiveRecord{
         //join convierte un arreglo en un string, recibe 2 parametros (separador,  array);
         $query = "INSERT INTO ". static::$tabla ." ( ";
         $query .= join(', ', array_keys($atributos));
-        $query .= " ) values(' "; 
+        $query .= " ) values('"; 
         $query .= join("', '", array_values($atributos));
-        $query .= " ')";
-        
+        $query .= "')";
+
         $resultado = self::$db->query($query);
         
         //redireccionar al usuario si todo sale bien

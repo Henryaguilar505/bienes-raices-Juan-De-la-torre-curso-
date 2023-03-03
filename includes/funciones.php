@@ -41,3 +41,25 @@ function validarTipo($tipo) : bool{
 
     return in_array($tipo, $tipos); //returnamos true or false
 }
+
+//mostrar notificaiones
+function mostrarNotificaiones(int $resultado) : string{
+    $mensaje = '';
+    switch ($resultado) {
+        case 1:
+            $mensaje = "Registrado correctamente";
+            break;
+        case 2:
+             $mensaje = "Actualizado correctamente";
+             break; 
+         case 3:
+             $mensaje = "Eliminado correctamente";
+             break;
+        
+        default:
+            $mensaje = false;
+            break;
+    }
+
+    return $mensaje;
+}

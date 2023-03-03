@@ -72,7 +72,7 @@ IncluirTemplate('header');
         </div>
     <?php endforeach; ?>
 
-    <form action="" class="formulario" method="POST" action="/admin/propiedades/crear.php" enctype="multipart/form-data">
+    <form class="formulario" method="POST" action="/admin/propiedades/crear.php" enctype="multipart/form-data">
 
         <?php include '../../includes/templates/formulario_propiedases.php' ?>
 
