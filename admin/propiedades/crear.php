@@ -1,32 +1,29 @@
 <?php
-
 //importar las funciones
 require '../../includes/app.php';
 
-//exxportar la case
+//exxportar las clases
 use App\Propiedad;
+use App\Vendedor;
 use Intervention\Image\ImageManagerStatic as Image; //exportar la libreria de imagenes
 
 //comprobar la session
 estaAutenticado();
 
-//conexion a la base de datos
-$db = conectarDB();
-
 //sirve para los place holder
 $propiedad = new Propiedad;
 
-//select para traer los vendeddores dessde la BD
-$consulta = "SELECT * FROM vendedores";
-$vendedores_nombres = mysqli_query($db, $consulta);
+//consulta para traer todos los vendedores
+$vendedores = Vendedor::all();
 
 $errores = Propiedad::getErrores();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') { //si se ha enviado el formulario..
-
-    // debuguear($_FILES);
+    
     //creamos una nueva instancia
     $propiedad = new Propiedad($_POST['propiedad']); // llenamos nuestro objeto con el array de post
+
+    // debuguear($propiedad);
 
     //generar nombre unico para cada imagen
     $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
@@ -42,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { //si se ha enviado el formulario..
     //validamos que no haya errores
     $errores = $propiedad->validar();
 
-    // debuguear($propiedad);
 
     if (empty($errores)) { //*si no hay errores ...
 

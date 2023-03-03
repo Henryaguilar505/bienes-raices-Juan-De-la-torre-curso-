@@ -1,6 +1,7 @@
 <?php
 //importar las funciones y conexion a base de datos
 use App\Propiedad;
+use App\Vendedor;
 use Intervention\Image\ImageManagerStatic as Image;
 
 require '../../includes/app.php';
@@ -16,6 +17,8 @@ if (!$id) {
 }
 
 $propiedad = Propiedad::find($id); //buscamos la propiedad por el id y a la vez devolvemos el resultado como un objeto
+
+$vendedores = Vendedor::all();
 $errores = Propiedad::getErrores(); //esta funcion devuelve los errores (ya que tenemos un objeto)
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

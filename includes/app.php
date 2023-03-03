@@ -10,9 +10,9 @@ require __DIR__ . "/../vendor/autoload.php";
 
 $db = conectarDB();
 
-use App\Propiedad; //usar la clase de propiedad
+use App\ActiveRecord; //usar la clase ActiveRecord donde tenemos la base de datos
 
-Propiedad::setDb($db); //de esta forma definimos a misma conwxion para cada  uno de los objetos
+ActiveRecord::setDb($db); //de esta forma definimos a misma conwxion para cada  uno de los objetos
 
 
 

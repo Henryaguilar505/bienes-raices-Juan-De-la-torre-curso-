@@ -33,12 +33,27 @@
             <label for="estacionamiento">Estacionamiento:</label>
             <input type="number" id="estacionamiento" name="propiedad[estacionamiento]" placeholder="ej: 3" min="1" max="12" value="<?php echo sanitizar($propiedad->estacionamiento)  ?? ''; ?>">
 
-
         </fieldset>
 
 
         <fieldset>
             <legend>Vendedor</legend>
-       
-           
+
+            <label for="vendedores">Vendedor:</label>
+            <select name="propiedad[vendedores_id]" id="vendedores">
+               <option selected value="">-- Seleccione -- </option>
+
+            <?php foreach($vendedores as $vendedor): ?>
+
+                <option 
+                  <?php echo $propiedad->vendedores_id === $vendedor->id ? 'selected' : ' ';  ?>
+                  value="<?php echo sanitizar($vendedor->id) ?>">
+
+                    <?php echo sanitizar($vendedor->nombre ) . " " . sanitizar($vendedor->apellido); ?>
+
+                </option>
+
+            <?php endforeach; ?>
+
+            </select>
         </fieldset>

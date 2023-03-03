@@ -33,3 +33,11 @@ function sanitizar($html) : string{
     $sanitizado = htmlspecialchars($html);
     return $sanitizado;
 }
+
+//funcion para comprobar si es tipo vendedor o tipo proopiedad
+function validarTipo($tipo) : bool{
+    //definimos los tipos validos
+    $tipos = ['vendedor', 'propiedad'];
+
+    return in_array($tipo, $tipos); //returnamos true or false
+}
