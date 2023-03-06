@@ -48,9 +48,7 @@
        <?php 
        $limite = 3;
        include 'includes/templates/anuncios.php';
-        ?>
-        
-           
+        ?>  
 
         </div><!--contenedor anuncios-->
 

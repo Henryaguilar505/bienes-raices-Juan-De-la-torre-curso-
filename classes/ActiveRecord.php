@@ -149,6 +149,13 @@ class ActiveRecord{
         return $resultado;
     }
 
+    //*metodo para listar registros pero con un limite
+    public static function get($cantidad){
+        $query = "SELECT * FROM " . static::$tabla ." LIMIT ". $cantidad;
+        $resultado = self::consultarSQL($query); // pasamos el query a otra funcion donde se lleva a cabo la consulta
+        return $resultado;
+    }
+
     //*metodo para listar registros por su id
     public static function find($id){
         $query = "SELECT * FROM ". static::$tabla ." WHERE id = {$id}";
